@@ -106,7 +106,7 @@ $this->breadcrumb = [
                 </mc-container>
             </div>
         </mc-tab>
-        <mc-tab label="<?= i::_e('Subprojetos') ?>" slug="subprojects">
+        <mc-tab label="<?= i::_e('Subprojetos') ?> (<?= count($entity->children) ?>)" slug=" subprojects">
             <div class="single-project__subproject">
                 <mc-container>
                     <main class="grid-12">
