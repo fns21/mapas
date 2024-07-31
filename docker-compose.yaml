@@ -7,6 +7,10 @@ x-defaults: &defaults
   #   - ./:/app
 
   environment: &environment
+    APP_MODE: ${APP_MODE}
+    APP_ENV: ${APP_ENV}
+    XDEBUG_MODE: ${XDEBUG_MODE}
+    DB_HOST: ${DB_HOST}
     PWA_UPSTREAM: ${PWA_UPSTREAM}
     SERVER_NAME: ${SERVER_NAME}
     TRUSTED_PROXIES: ${TRUSTED_PROXIES}
@@ -15,7 +19,7 @@ x-defaults: &defaults
     BUILD_ASSETS: ${BUILD_ASSETS}
     PENDING_PCACHE_RECREATION_INTERVAL: ${PENDING_PCACHE_RECREATION_INTERVAL}
     JOBS_INTERVAL: ${JOBS_INTERVAL}
-    REDIS_CACHE: ${REDIS_CACHE}
+    # REDIS_CACHE: ${REDIS_CACHE} 
     MAILER_TRANSPORT: ${MAILER_TRANSPORT}
     MAILER_FROM: ${MAILER_FROM}
     NUM_PROCESSES: ${NUM_PROCESSES}
@@ -23,6 +27,7 @@ x-defaults: &defaults
     GOOGLE_RECAPTCHA_SITEKEY: ${GOOGLE_RECAPTCHA_SITEKEY}
     GOOGLE_RECAPTCHA_SECRET: ${GOOGLE_RECAPTCHA_SECRET}
     SESSIONS_SAVE_PATH: ${SESSIONS_SAVE_PATH}
+    APP_RUNTIME: ${APP_RUNTIME}
 
 services:
   web:
@@ -30,13 +35,13 @@ services:
     image: ghcr.io/redemapas/mapas
     restart: unless-stopped
     depends_on:
-      - db-update
+      - database
     environment:
       <<: *environment
     ports:
       - 80
     volumes:
-      # - ./api:/app
+      - ./:/app
       # - /app/var
       - var-files:/app/var/private-files
       - user-public-files:/app/mapas/public/files
@@ -89,14 +94,14 @@ services:
     labels:
       - "cron.schedule=* * * ? * *"
 
-  db-update:
-    <<: *defaults
-    image: ghcr.io/redemapas/mapas
-    command: php mapas/src/tools/apply-updates.php
-    depends_on:
-      - database
-    volumes:
-      - var-files:/app/var/private-files
+  # db-update:
+  #   <<: *defaults
+  #   image: ghcr.io/redemapas/mapas
+  #   command: php mapas/src/tools/apply-updates.php
+  #   depends_on:
+  #     - database
+  #   volumes:
+  #     - var-files:/app/var/private-files
 
   # mc-update:
   #   command: php mapas/src/tools/apply-multicore-db-update.php
@@ -144,7 +149,7 @@ services:
       DATADIR: ${DATADIR}
     volumes:
       - db_data:/opt/postgres/data
-      #- ./api/mapas/dev/db:/docker-entrypoint-initdb.d
+      - ./dev/db:/docker-entrypoint-initdb.d
       # you may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./api/docker/db/data:/var/lib/postgresql/data
     ports:

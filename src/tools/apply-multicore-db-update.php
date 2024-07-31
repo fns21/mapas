@@ -9,6 +9,10 @@ define('UPDATE_NAME', $argv[3]);
 
 
 require __DIR__ . '/../../public/bootstrap.php';
+
+$app = MapasCulturais\App::i('web');
+$app->init($config);
+
 use MapasCulturais\App;
 use MapasCulturais\Entities;
 

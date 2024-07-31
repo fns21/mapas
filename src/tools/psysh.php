@@ -1,8 +1,6 @@
 <?php
 require __DIR__ . '/../../public/bootstrap.php';
 
-$em = $app->em;
-
 function mb_str_pad($str, $pad_len, $pad_str = ' ', $dir = STR_PAD_RIGHT, $encoding = NULL)
 {
     $encoding = $encoding === NULL ? mb_internal_encoding() : $encoding;

@@ -4,7 +4,8 @@ ini_set('memory_limit', '2048M');
 unset($_ENV['LOG_HOOK']);
 require __DIR__ . '/../../public/bootstrap.php';
 
-$app = MapasCulturais\App::i();
+$app = MapasCulturais\App::i('web');
+$app->init($config);
 if($app->config['app.log.pcache']){
     $app->log->debug('RECREATE PENDING PCACHE');
 }

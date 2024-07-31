@@ -1,7 +1,6 @@
 #!/usr/bin/env php
 <?php
 
-require dirname(__DIR__, 2).'/vendor/autoload.php';
 require dirname(__DIR__, 2).'/public/bootstrap.php';
 
 use App\Application\Environment;
@@ -15,7 +14,8 @@ use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 use Doctrine\ORM\Tools\Console\Command\SchemaTool;
 
-$entityManager = $app->em ?? null;
+// annotation driver
+$entityManager = $em ?? null;
 
 $application = ConsoleRunner::createApplication(
     new SingleManagerProvider($entityManager)

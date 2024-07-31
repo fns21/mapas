@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/secultce/mapacultural#readme",
   "dependencies": {
-    "cypress": "^13.11.0",
     "ng-recaptcha": "^13.2.1"
   },
   "devDependencies": {
+    "cypress": "^13.11.0",
     "eslint": "^8.56.0",
     "eslint-config-semistandard": "^17.0.0",
     "eslint-config-standard": "^17.1.0",

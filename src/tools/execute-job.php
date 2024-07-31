@@ -8,7 +8,8 @@ if($app->config['app.log.jobs']){
     $app->log->debug('EXECUTE JOB ' . date('Y-m-d H:i:s'));
 }
 
-$app = MapasCulturais\App::i();
+$app = MapasCulturais\App::i('web');
+$app->init($config);
 
 $app->executeJob();
 $app->em->getConnection()->close();

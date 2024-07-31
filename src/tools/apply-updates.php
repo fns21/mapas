@@ -8,7 +8,12 @@ $save_log = isset($argv[1]) && $argv[1];
 if($save_log)
     ob_start();
 
-require __DIR__ . '/../../public/bootstrap.php';
+
+require dirname(__DIR__, 2).'/public/bootstrap.php';
+
+// create the App instance
+$app = MapasCulturais\App::i('web');
+$app->init($config);
 
 if($save_log)
     $log = ob_get_clean();

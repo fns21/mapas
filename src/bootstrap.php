@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '/functions.php';
 
 define('MINUTE_IN_SECONDS', 60);
 define('HOUR_IN_SECONDS', MINUTE_IN_SECONDS * 60);
@@ -18,6 +17,10 @@ define('PLUGINS_PATH', APPLICATION_PATH . 'plugins/');
 define('MODULES_PATH', APPLICATION_PATH . 'modules/');
 define('VAR_PATH', PROTECTED_PATH . 'var/');
 define('CONFIG_PATH', PROTECTED_PATH . 'config/');
+
+require_once PROTECTED_PATH . 'vendor/autoload.php';
+
+require __DIR__ . '/functions.php';
 
 define('DOCTRINE_PROXIES_PATH', VAR_PATH . 'DoctrineProxies/');
 define('PRIVATE_FILES_PATH', env('PRIVATE_FILES_PATH', VAR_PATH . 'private-files/'));
@@ -63,4 +66,3 @@ if(!isset($_SERVER['HTTP_HOST'])) {
     $_SERVER['HTTP_HOST'] = 'localhost';
 }
 
-require_once PROTECTED_PATH . 'vendor/autoload.php';

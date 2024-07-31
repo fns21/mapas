@@ -2,19 +2,19 @@
 
 # Adapted from https://github.com/dunglas/symfony-docker
 
-FROM node:20 as frontend_build
+# FROM node:20 as frontend_build
 
-# user: "node"
-WORKDIR /app
-# environment:
-ENV NODE_ENV=development
-COPY --link . /app
-WORKDIR /app/src
-RUN npm i -g pnpm && pnpm i
-RUN pnpm run build
+# # user: "node"
+# WORKDIR /app
+# # environment:
+# ENV NODE_ENV=development
+# COPY --link . /app
+# WORKDIR /app/src
+# RUN npm i -g pnpm && pnpm i
+# RUN pnpm run build
 
 # Versions
-FROM dunglas/frankenphp:1-php8.3 AS frankenphp_upstream
+# FROM dunglas/frankenphp:1-php8.3 AS frankenphp_upstream
 
 
 # The different stages of this Dockerfile are meant to be built into separate images
@@ -23,12 +23,12 @@ FROM dunglas/frankenphp:1-php8.3 AS frankenphp_upstream
 
 
 # Base FrankenPHP image
-FROM frankenphp_upstream AS frankenphp_base
+FROM dunglas/frankenphp:1-php8.3 AS frankenphp_base
 
 WORKDIR /app
 
 # COPY --link . /app
-COPY --link --from=frontend_build /app /app
+COPY --link . /app
 
 # persistent / runtime deps
 # hadolint ignore=DL3008
@@ -64,7 +64,6 @@ CMD [ "frankenphp", "run", "--config", "/etc/caddy/Caddyfile" ]
 # Dev FrankenPHP image
 FROM frankenphp_base AS frankenphp_dev
 
-ENV APP_ENV=dev XDEBUG_MODE=off
 # VOLUME /app/var/
 # COPY --link . /app
 

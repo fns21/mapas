@@ -1,6 +1,12 @@
 <?php
-function env(string $name, $default = null) {
-    if(defined('GENERATING_CONFIG_DOCUMENTATION')){
+use Symfony\Component\Dotenv\Dotenv;
+
+function env(string $name, $default = null)
+{
+    $dotenv = new Dotenv();
+    $dotenv->load(dirname(__DIR__, 1) . '/.env');
+
+    if (defined('GENERATING_CONFIG_DOCUMENTATION')) {
         __log_env($name, $default);
     }
 

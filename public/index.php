@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 use App\Kernel;
 
-include dirname(__DIR__).'/vendor/autoload.php';
-
 require_once 'bootstrap.php';
 
-(new Kernel)->execute();
+// (new Kernel)->execute();
 
+$app = MapasCulturais\App::i('web');
+$app->init($config);
 $app->run();
