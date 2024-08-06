@@ -20,7 +20,7 @@ return [
             'espaco'            => ['space', 'single'],
             'projeto'           => ['project', 'single'],
             'selo'              => ['seal', 'single'],
-            'oportunidade'      => ['opportunity', 'single'],
+            'edital'            => ['opportunity', 'single'],
             'instalacao'        => ['subsite', 'single'],
             
             'edicao-de-evento'            => ['event', 'edit'],

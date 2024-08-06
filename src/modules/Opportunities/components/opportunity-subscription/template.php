@@ -61,7 +61,7 @@ $this->import('
 
 				<div v-if="categories.length > 0" class="col-6 sm:col-12 field">
 					<select name="category" v-model="category">
-						<option value="null" disabled selected> <?= $this->text('placeholder-category', i::__('Selecione a categoria')) ?> </option>
+						<option value="null" disabled selected> <?= $this->text('placeholder-category', i::__('Selecione o eixo')) ?> </option>
 						<option v-for="category in categories" :value="category"> {{category}} </option>
 					</select>
 				</div>

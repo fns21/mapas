@@ -214,3 +214,14 @@
 @import 'pages/terms';
 @import 'pages/theme-customizer';
 @import 'pages/user-detail';
+
+.panel-nav :nth-child(2) li:first-child,
+.panel-nav :nth-child(2) li:last-child {
+    display: none;
+}
+
+.container.opportunity .entity-related-agents,
+.container.opportunity .entity-terms,
+.single-opportunity .mc-breadcrumb {
+    display: none;
+}

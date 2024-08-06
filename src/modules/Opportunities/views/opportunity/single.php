@@ -62,10 +62,10 @@ $this->breadcrumb = [
             <dt><?= i::__('Tipo')?></dt>
             <dd :class="[entity.__objectType+'__color', 'type']"> {{entity.type.name}} </dd>
         </dl>
-        <dl v-if="entity.ownerEntity" class="single-opportunity__owner">
+        <!-- <dl v-if="entity.ownerEntity" class="single-opportunity__owner">
             <dt><?= i::__('Vinculado com ') ?><opportunity-owner-type :entity="entity"></opportunity-owner-type></dt>
             <dd><mc-link :entity="entity.ownerEntity"></mc-link></dd>
-        </dl>
+        </dl> -->
     </template>
   </entity-header>
 

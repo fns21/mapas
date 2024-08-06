@@ -1,5 +1,7 @@
 <?php 
 
 return [
-    'middlewares' => []
+    'middlewares' => [
+        '\MapasCulturais\Middlewares\Redirect'
+    ]
 ];

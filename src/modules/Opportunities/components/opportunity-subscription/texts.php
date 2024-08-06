@@ -2,7 +2,7 @@
 use MapasCulturais\i;
 
 return [
-    'selecione categoria' => $this->text('error-category', i::__('Por favor, selecione a categoria da inscrição')),
+    'selecione categoria' => $this->text('error-category', i::__('Por favor, selecione o eixo da inscrição')),
     'selecione tipo de proponente' => $this->text('error-proponent-type', i::__('Por favor, selecione o tipo de proponente da inscrição')),
     'selecione faixa' => $this->text('error-range', i::__('Por favor, selecione a faixa para inscrição')),
     'selecione agente' => i::__('Por favor, selecione o agente responsável pela inscrição'),
