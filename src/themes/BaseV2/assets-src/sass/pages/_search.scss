@@ -317,6 +317,16 @@
                 &__cards {
                     position: relative;
 
+                    &--no-occurrence {
+                        background-color: var(--mc-white);
+                        border-radius: var(--mc-border-radius-sm);
+                        padding: size(28);
+                        width: 100%;
+                        height: 20%;
+                        display: flex;
+                        box-sizing: border-box;
+                        align-items: center; 
+                    }
                     //aqui é o estilo do marcador de tempo
                     &--date {
                         align-items: center;
